@@ -1,6 +1,16 @@
 PEARX
 =====
 
+## Install
+
+    $ git clone git://github.com/c9s/PEARX.git
+    $ cd PEARX
+    $ onion bundle
+    $ sudo pear install -f package.xml
+
+## Synopsis
+
+
 A non-installer dependency PEAR channel information library.
 
     use CacheKit\FileSystemCache;
