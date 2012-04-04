@@ -18,7 +18,8 @@ Features:
 
 ## Synopsis
 
-
+```php
+<?php
     use CacheKit\FileSystemCache;
 
     $channel = new PEARX\Channel($host);
@@ -45,10 +46,13 @@ Features:
             $stability = $package->getRelease('0.0.1');
         }
     }
+```
 
 
 To use PEARX with Cache and CurlDownlaoder
 
+```php
+<?php
     $cache = new CacheKit\FileSystemCache(array(
         'expiry' => 60 * 30, // 30 minutes
         'cache_dir' => '/tmp/cache',
@@ -61,5 +65,6 @@ To use PEARX with Cache and CurlDownlaoder
         'cache' => $cache,
         'downloader' => $d,
     ));
+```
 
 
