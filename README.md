@@ -1,7 +1,7 @@
 PEARX
 =====
 
-PEARX - A Non-PEAR-Installer-Dependency PEAR Channel Library.
+PEARX - A Non-PEAR-Installer-Dependent PEAR Channel Library.
 
 Features:
 
