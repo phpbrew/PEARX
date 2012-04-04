@@ -1,6 +1,14 @@
 PEARX
 =====
 
+PEARX - A Non-PEAR-Installer-Dependency PEAR Channel Library.
+
+Features:
+
+- Fast
+- Non-PEAR dependency
+- Support Cache
+
 ## Install
 
     $ git clone git://github.com/c9s/PEARX.git
@@ -10,8 +18,6 @@ PEARX
 
 ## Synopsis
 
-
-A non-installer dependency PEAR channel information library.
 
     use CacheKit\FileSystemCache;
 
