@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.4.10" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0        http://pear.php.net/dtd/tasks-1.0.xsd        http://pear.php.net/dtd/package-2.0        http://pear.php.net/dtd/package-2.0.xsd">
   <name>PEARX</name>
-  <channel/>
+  <channel>pear.corneltek.com</channel>
   <summary>A Non-PEAR-Installer-Dependency PEAR Channel Library.</summary>
   <description>A Non-PEAR-Installer-Dependency PEAR Channel Library.</description>
   <lead>
@@ -11,7 +11,7 @@
     <active>yes</active>
   </lead>
   <date>2012-04-04</date>
-  <time>15:24:16</time>
+  <time>15:24:39</time>
   <version>
     <release>1.0.0</release>
     <api>1.0.0</api>
