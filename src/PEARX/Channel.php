@@ -73,7 +73,7 @@ class Channel
 
     public function getBaseUrl()
     {
-        return $this->scheme . '://' . $this->name . '/';
+        return $this->scheme . '://' . $this->name;
     }
 
     public function getRestBaseUrl($version = null)

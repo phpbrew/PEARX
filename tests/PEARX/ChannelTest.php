@@ -3,20 +3,11 @@
 class ChannelTest extends PHPUnit_Framework_TestCase
 {
 
-    public function getChannels()
-    {
-        return array(
-            // array( 'pear.php.net' ),
-            // array( 'pear.zfcampus.org' ),
-            array( 'pear.corneltek.com' ),
-        );
-    }
-
 
     public function testPackageFindPear()
     {
         $cache = new CacheKit\FileSystemCache(array(
-            'expiry' => 30,
+            'expiry' => 10,
             'cache_dir' => 'tests/tmp',
         ));
         $channel = new PEARX\Channel('pear.php.net', array( 
@@ -55,10 +46,21 @@ class ChannelTest extends PHPUnit_Framework_TestCase
     }
 
 
+    function getChannels()
+    {
+        return array(
+            // array( 'pear.zfcampus.org' ),
+            array('pear.corneltek.com'),
+            array('pear.symfony.com'),
+            // array('pear.php.net'),
+        );
+    }
+
+
     /**
      * @dataProvider getChannels
      */
-    public function testChannel($host)
+    function testChannel($host)
     {
         $channel = new PEARX\Channel($host);
         ok( $channel );
