@@ -79,8 +79,8 @@ class Channel
     public function getRestBaseUrl($version = null)
     {
         if( $version && $this->primary[$version] )
-            return $this->primary[ $version ];
-        return $this->primary[ $this->rest ];
+            return rtrim($this->primary[ $version ],'/');
+        return rtrim($this->primary[ $this->rest ],'/');
     }
 
 
