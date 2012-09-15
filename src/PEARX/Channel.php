@@ -110,7 +110,7 @@ class Channel
                 }
             } catch( Exception $e ) {
                 fwrite( STDERR , "PEAR Channel discover failed: $host\n" );
-                fwrite( STDERR , $e->getMessage(), "\n" );
+                fwrite( STDERR , $e->getMessage() . "\n" );
             }
         }
 
