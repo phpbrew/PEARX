@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.4.10" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0        http://pear.php.net/dtd/tasks-1.0.xsd        http://pear.php.net/dtd/package-2.0        http://pear.php.net/dtd/package-2.0.xsd">
+<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.4.10" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0               http://pear.php.net/dtd/tasks-1.0.xsd               http://pear.php.net/dtd/package-2.0               http://pear.php.net/dtd/package-2.0.xsd">
   <name>PEARX</name>
   <channel>pear.corneltek.com</channel>
   <summary>A Non-PEAR-Installer-Dependency PEAR Channel Library.</summary>
@@ -10,11 +10,11 @@
     <email>cornelius.howl@gmail.com</email>
     <active>yes</active>
   </lead>
-  <date>2012-04-23</date>
-  <time>18:55:08</time>
+  <date>2012-09-17</date>
+  <time>01:19:17</time>
   <version>
-    <release>1.0.0</release>
-    <api>1.0.0</api>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
   </version>
   <stability>
     <release>stable</release>
@@ -27,25 +27,8 @@
       <file name="tests/bootstrap.php" role="test" md5sum="c22ee2c61da24da51e4c49d34dfef4e1"/>
       <file name="tests/PEARX/ChannelParserTest.php" role="test" md5sum="84fe2fcb71bf04edf699f919ee544ce6"/>
       <file name="tests/PEARX/ChannelTest.php" role="test" md5sum="1c1476f99e55485cb78e01d4602f4265"/>
-      <file name="tests/tmp/http_pear_corneltek_com_channel_xml" role="test" md5sum="f0444e1a159c8cfdbfc80f37b0aac159"/>
-      <file name="tests/tmp/http_pear_corneltek_com_rest_c_categories_xml" role="test" md5sum="071f414c7df6eb7f4a371a541ed95201"/>
-      <file name="tests/tmp/http_pear_corneltek_com_rest_c_Default_packagesinfo_xml" role="test" md5sum="9a80b563e03b91c8ae61b7fc218dedfd"/>
-      <file name="tests/tmp/http_pear_php_net_channel_xml" role="test" md5sum="bba3c76dc40240dcae23af5da851ec71"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Audio_packagesinfo_xml" role="test" md5sum="53013642b7b55869d2cf6c33725669fc"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Authentication_packagesinfo_xml" role="test" md5sum="0506af2f1f38ffacbf237429fb4938a9"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Benchmarking_packagesinfo_xml" role="test" md5sum="4096c7cc99c2ec27933488c9a33e7288"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Caching_packagesinfo_xml" role="test" md5sum="43f4950eef914faac1020da1ea2fea1a"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_categories_xml" role="test" md5sum="973eb455130215833b448b8d60d8ba40"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Configuration_packagesinfo_xml" role="test" md5sum="dbf3ed2a00fba62a5b2fba7a05e795d6"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Console_packagesinfo_xml" role="test" md5sum="6c4b8fd88554872b119a6553fdf23a5c"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Database_packagesinfo_xml" role="test" md5sum="2adcc45673952c176044738e5140ef21"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Date_2Band_2BTime_packagesinfo_xml" role="test" md5sum="ecde5e19d119f5f3484bbfed4e8bcc59"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Encryption_packagesinfo_xml" role="test" md5sum="523ba7093efa1f59fb69817a90ac738f"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Event_packagesinfo_xml" role="test" md5sum="35f72ebe5d679b372b230322078aece9"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_File_2BFormats_packagesinfo_xml" role="test" md5sum="07e55dab186914899fca1e47b1667e42"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_File_2BSystem_packagesinfo_xml" role="test" md5sum="2eb45ef914ed6f7a50601d72703edca5"/>
       <file name="src/PEARX/Category.php" role="php" md5sum="1bdf39ebf31d72c38a8868fe0a5e93ac"/>
-      <file name="src/PEARX/Channel.php" role="php" md5sum="82bb01c09ef664e6295201d9c7d10e6a"/>
+      <file name="src/PEARX/Channel.php" role="php" md5sum="a06250ffa6b71bcb220611e1bb175ad2"/>
       <file name="src/PEARX/ChannelParser.php" role="php" md5sum="7c5b3c92273ef7afd89f7fa3b147ce98"/>
       <file name="src/PEARX/Core.php" role="php" md5sum="e9029e883f8dfc9e7d63ec8f6ceff42f"/>
       <file name="src/PEARX/Package.php" role="php" md5sum="6cdcaaac8e61d386c311e85b0d438d27"/>
@@ -77,23 +60,6 @@
       <install name="tests/bootstrap.php" as="bootstrap.php"/>
       <install name="tests/PEARX/ChannelParserTest.php" as="PEARX/ChannelParserTest.php"/>
       <install name="tests/PEARX/ChannelTest.php" as="PEARX/ChannelTest.php"/>
-      <install name="tests/tmp/http_pear_corneltek_com_channel_xml" as="tmp/http_pear_corneltek_com_channel_xml"/>
-      <install name="tests/tmp/http_pear_corneltek_com_rest_c_categories_xml" as="tmp/http_pear_corneltek_com_rest_c_categories_xml"/>
-      <install name="tests/tmp/http_pear_corneltek_com_rest_c_Default_packagesinfo_xml" as="tmp/http_pear_corneltek_com_rest_c_Default_packagesinfo_xml"/>
-      <install name="tests/tmp/http_pear_php_net_channel_xml" as="tmp/http_pear_php_net_channel_xml"/>
-      <install name="tests/tmp/http_pear_php_net_rest_c_Audio_packagesinfo_xml" as="tmp/http_pear_php_net_rest_c_Audio_packagesinfo_xml"/>
-      <install name="tests/tmp/http_pear_php_net_rest_c_Authentication_packagesinfo_xml" as="tmp/http_pear_php_net_rest_c_Authentication_packagesinfo_xml"/>
-      <install name="tests/tmp/http_pear_php_net_rest_c_Benchmarking_packagesinfo_xml" as="tmp/http_pear_php_net_rest_c_Benchmarking_packagesinfo_xml"/>
-      <install name="tests/tmp/http_pear_php_net_rest_c_Caching_packagesinfo_xml" as="tmp/http_pear_php_net_rest_c_Caching_packagesinfo_xml"/>
-      <install name="tests/tmp/http_pear_php_net_rest_c_categories_xml" as="tmp/http_pear_php_net_rest_c_categories_xml"/>
-      <install name="tests/tmp/http_pear_php_net_rest_c_Configuration_packagesinfo_xml" as="tmp/http_pear_php_net_rest_c_Configuration_packagesinfo_xml"/>
-      <install name="tests/tmp/http_pear_php_net_rest_c_Console_packagesinfo_xml" as="tmp/http_pear_php_net_rest_c_Console_packagesinfo_xml"/>
-      <install name="tests/tmp/http_pear_php_net_rest_c_Database_packagesinfo_xml" as="tmp/http_pear_php_net_rest_c_Database_packagesinfo_xml"/>
-      <install name="tests/tmp/http_pear_php_net_rest_c_Date_2Band_2BTime_packagesinfo_xml" as="tmp/http_pear_php_net_rest_c_Date_2Band_2BTime_packagesinfo_xml"/>
-      <install name="tests/tmp/http_pear_php_net_rest_c_Encryption_packagesinfo_xml" as="tmp/http_pear_php_net_rest_c_Encryption_packagesinfo_xml"/>
-      <install name="tests/tmp/http_pear_php_net_rest_c_Event_packagesinfo_xml" as="tmp/http_pear_php_net_rest_c_Event_packagesinfo_xml"/>
-      <install name="tests/tmp/http_pear_php_net_rest_c_File_2BFormats_packagesinfo_xml" as="tmp/http_pear_php_net_rest_c_File_2BFormats_packagesinfo_xml"/>
-      <install name="tests/tmp/http_pear_php_net_rest_c_File_2BSystem_packagesinfo_xml" as="tmp/http_pear_php_net_rest_c_File_2BSystem_packagesinfo_xml"/>
       <install name="src/PEARX/Category.php" as="PEARX/Category.php"/>
       <install name="src/PEARX/Channel.php" as="PEARX/Channel.php"/>
       <install name="src/PEARX/ChannelParser.php" as="PEARX/ChannelParser.php"/>
