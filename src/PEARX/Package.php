@@ -3,7 +3,6 @@ namespace PEARX;
 
 class Package
 {
-
     public $name;
 
     public $summary;
@@ -25,16 +24,49 @@ class Package
 
     public $versions = array();
 
+
+    /**
+     * Dependency of versions.
+     */
     public $deps = array();
 
+
+    /**
+     * Last stable version.
+     */
     public $stable;
 
+
+    /**
+     * Last alpha version.
+     */
     public $alpha;
 
+    /**
+     * Last beta version.
+     */
     public $beta;
 
+    /**
+     * Latest version.
+     */
     public $latest;
 
+
+    public function setName($name) 
+    {
+        $this->name = $name;
+    }
+
+    public function setChannel($url)
+    {
+        $this->channel = $url;
+    }
+
+    /**
+     * @param string $version version string.
+     * @param string $stability stability string.
+     */
     public function addRelease( $version , $stability )
     {
         $this->releases[] = (object) array( 
@@ -66,7 +98,5 @@ class Package
     {
         return $this->name;
     }
-
 }
-
 
