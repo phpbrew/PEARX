@@ -2,12 +2,25 @@
 
 class ParserTest extends PHPUnit_Framework_TestCase
 {
-    public function test()
+
+    public function packageXmlFileProvider()
+    {
+        $files =  glob('tests/data/package_xml/**/package.xml');
+        return array_map(function($file) { 
+            return array($file);
+        }, $files);
+    }
+
+
+    /**
+     * @dataProvider packageXMlFileProvider
+     */
+    public function testParser($file)
     {
         $parser = new PEARX\PackageXml\Parser;
         ok($parser);
 
-        $package = $parser->parse('tests/data/package_xml/Twig/package.xml');
+        $package = $parser->parse($file);
         ok($package);
         ok($package->name);
         ok($package->getChannel());
