@@ -11,7 +11,9 @@ class ParserTest extends PHPUnit_Framework_TestCase
         ok($package);
         ok($package->name);
         ok($package->channel);
-        ok($pacakge->datetime);
+        ok($package->date);
+        ok($package->time);
+        ok($package->getDateTime() );
     }
 }
 

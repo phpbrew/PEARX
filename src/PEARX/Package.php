@@ -66,11 +66,11 @@ class Package
 
     public function getDateTime()
     {
-        if( $this->_datetime )
-            return $this->_datetime;
-
         if( $this->date && $this->time ) {
             return new DateTime( $this->date . ' ' . $this->time );
+        }
+        if( $this->_datetime ) {
+            return $this->_datetime;
         }
     }
 
@@ -100,6 +100,10 @@ class Package
         $this->time = $time;
     }
 
+    public function getChannel()
+    {
+        return $this->channel;
+    }
 
     public function setChannel($c)
     {
@@ -117,19 +121,38 @@ class Package
         $this->license = $license;
     }
 
+    public function getLicense()
+    {
+        return $this->license;
+    }
+
     public function setSummary($summary)
     {
         $this->summary = $summary;
     }
+
+
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
 
     public function setDescription($desc)
     {
         $this->description = $desc;
     }
 
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
     public function getId()
     {
         return $this->name;
     }
+
 }
 
