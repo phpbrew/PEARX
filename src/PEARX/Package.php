@@ -211,6 +211,21 @@ class Package
         return $this->contents;
     }
 
+    /**
+     * get FileContent objects by role
+     *
+     * @param string $role role string.
+     *
+     * @return PEARX\PackageXml\ContentFile[]
+     */
+    public function getContentsByRole($role)
+    {
+        return array_filter($this->contents , function($item) use ($role) {
+            return $item->role === $role;
+        });
+    }
+
+
 
     public function validateDependencyType($type)
     {

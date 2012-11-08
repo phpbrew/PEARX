@@ -186,13 +186,13 @@ class Parser
 
 
 
-    // DEPRECATED.
+    // XXX: DEPRECATED.
     public function getContentFiles()
     {
         return $this->parseContents();
     }
 
-    // DEPRECATED.
+    // XXX: DEPRECATED.
     public function getContentFilesByRole($role)
     {
         return $this->getContentsByRole($role);
