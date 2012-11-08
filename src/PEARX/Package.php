@@ -76,10 +76,21 @@ class Package
         $this->apiVersion = $version;
     }
 
+    public function getApiVersion()
+    {
+        return $this->apiVersion;
+    }
+
     public function setReleaseVersion($version)
     {
         $this->releaseVersion = $version;
     }
+
+    public function getReleaseVersion()
+    {
+        return $this->releaseVersion;
+    }
+
 
     public function setStability($s) 
     {
@@ -296,7 +307,7 @@ class Package
      *
      * @param string $sourceDir source directory path
      */
-    public function getInstallFileList($sourceDir = null)
+    public function getInstallFileList($sourceDir = null, $distDir = null)
     {
         $installMap = $this->getReleaseFileList();
         $filelist = array();
@@ -310,6 +321,10 @@ class Package
                     $installAs = $installMap[ $file->file ];
                 } else {
                     $installAs = $file->getInstallAs();
+                }
+
+                if ( $distDir ) {
+                    $installAs = $distDir . DIRECTORY_SEPARATOR . $installAs;
                 }
 
                 $filelist[] = (object) array(
