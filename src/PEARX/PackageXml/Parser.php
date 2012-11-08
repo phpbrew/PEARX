@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  *
  */
-namespace PEARX;
+namespace PEARX\PackageXml;
 use SimpleXMLElement;
 use Exception;
 use PEARX\PackageXml\FileListInstall;
