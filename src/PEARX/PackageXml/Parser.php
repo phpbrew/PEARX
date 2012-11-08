@@ -34,7 +34,7 @@ class Parser
         if( strpos($arg,'<?xml') === 0 ) {
             $this->xml = new SimpleXMLElement( $arg );
         }
-        elseif( file_exists($arg) ) {
+        elseif( file_exists($arg) || preg_match('#^https?://#',$arg) ) {
             $this->xml = new SimpleXMLElement( file_get_contents( $arg ) );
         }
         else {
