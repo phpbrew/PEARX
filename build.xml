@@ -145,18 +145,9 @@
 
  <target name="package">
      <if>
-         <available file="scripts/compile.sh"/>
-         <then>
-            <exec executable="bash" failonerror="true">
-                <arg value="scripts/compile.sh"/>
-            </exec>
-         </then>
-     </if>
-     <if>
          <available file="package.ini"/>
         <then>
             <exec executable="onion" failonerror="true">
-                <arg value="-d"/>
                 <arg value="build"/>
             </exec>
         </then>
