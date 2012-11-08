@@ -9,7 +9,7 @@
    depends="prepare,bundle,lint,phploc,pdepend,phpcpd,phpdox,phpunit,package"/>
 
  <target name="build-parallel"
-   depends="prepare,lint,tools-parallel,phpunit"/>
+   depends="prepare,lint,tools-parallel,phpunit,doxygen"/>
 
  <target name="tools-parallel" description="Run tools in parallel">
   <parallel threadCount="2">
@@ -120,6 +120,15 @@
 
  <target name="phpdox" description="Generate API documentation using phpDox">
     <exec executable="phpdox"/>
+ </target>
+ <target name="doxygen">
+     <if>
+        <available file="Doxyfile"/>
+        <then>
+            <exec executable="doxygen" failonerror="true">
+            </exec>
+        </then>
+     </if>
  </target>
 
  <target name="bundle">
