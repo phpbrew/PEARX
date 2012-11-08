@@ -3,23 +3,39 @@ namespace PEARX;
 use Phar;
 use PharData;
 use Exception;
+use PEARX\PackageXml\Parser as PackageXmlParser;
 
 class Installer 
 {
+    public $workspace = 'workspace';
 
-
-    public function extract($file,$targetPath)
+    public function setWorkspace($path)
     {
-        $archive = new PharData($file);
-        $archive->extractTo( $targetPath );
-        return $archive;
+        $this->workspace = $path;
+    }
+
+    public function getWorkspace()
+    {
+        return $this->workspace;
+    }
+
+
+    /**
+     *
+     * {workspace}/{package name}_{timestamp}
+     *
+     * workspace/cliframework_1_5_7_tgz_1352398203
+     */
+    public function getWorkspaceForPackage($distPath)
+    {
+        $name = strtolower(preg_replace('#\W+#','_',basename($distPath))) . '_' . time();
+        return $this->getWorkspace() . DIRECTORY_SEPARATOR . $name;
     }
 
     public function install($distPath,$targetDir)
     {
         $distFile = basename($distPath);
-        $workspace = 'workspace';
-        $packageDir =  $workspace . DIRECTORY_SEPARATOR . time();
+        $packageDir = $this->getWorkspaceForPackage($distPath);
 
         $this->extract($distFile,$packageDir);
 
@@ -29,7 +45,7 @@ class Installer
             mkdir( $packageDir , 0755, true );
 
         // parse package.xml
-        $parser = new \PEARX\PackageXml\Parser;
+        $parser = new PackageXmlParser;
         $package = $parser->parse( $packageDir . DIRECTORY_SEPARATOR . 'package.xml' );
 
         $sourceDir = $packageDir . DIRECTORY_SEPARATOR . $package->getName() . '-' . $package->getReleaseVersion();
@@ -44,6 +60,14 @@ class Installer
         }
         return $filelist;
     }
+
+    public function extract($file,$targetPath)
+    {
+        $archive = new PharData($file);
+        $archive->extractTo( $targetPath );
+        return $archive;
+    }
+
 }
 
 
