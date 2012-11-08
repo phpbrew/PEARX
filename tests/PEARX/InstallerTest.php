@@ -2,17 +2,31 @@
 
 class InstallerTest extends PHPUnit_Framework_TestCase
 {
-    public function testPearPackageInstaller()
+
+    public function distUrlProvider()
     {
-        $tmpDir = sys_get_temp_dir();
+        return array(
+            array('http://pear.corneltek.com/get/AssetKit-1.4.1.tgz')
+        );
+    }
+
+
+    /**
+     * @dataProvider distUrlProvider
+     */
+    public function testPearPackageInstaller($distUrl)
+    {
+        $tmpDir = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'pearx_tests';
+        if( ! file_exists($tmpDir) )
+            mkdir($tmpDir,0755,true);
+
         echo "\nUsing temp dir: $tmpDir\n";
         chdir($tmpDir);
 
-        $url = 'http://pear.corneltek.com/get/AssetKit-1.4.1.tgz';
-        $info = parse_url($url);
+        $info = parse_url($distUrl);
         $packageFile = basename($info['path']);
         if( ! file_exists($packageFile) ) {
-            system("wget $url");
+            system("wget $distUrl");
         }
 
         $installer = new \PEARX\Installer;
