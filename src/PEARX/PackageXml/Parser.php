@@ -25,7 +25,13 @@ class Parser
 {
     public $xml;
 
-    public function __construct($arg)
+    public function __construct($arg = null)
+    {
+        if ( $arg )
+            $this->parse($arg);
+    }
+
+    public function parse($arg) 
     {
         if( strpos($arg,'<?xml') === 0 ) {
             $this->xml = new SimpleXMLElement( $arg );
@@ -37,7 +43,6 @@ class Parser
             throw new XmlException('Invalid xml argument.');
         }
     }
-
 
     /**
      * need to support base installdir
