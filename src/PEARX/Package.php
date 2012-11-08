@@ -12,6 +12,20 @@ class Package
 
     public $description;
 
+
+    /**
+     * @var string date
+     */
+    public $date;
+
+    /**
+     * @var string time
+     */
+    public $time;
+
+
+    private $_datetime;
+
     /**
      * @var PEARX\Channel
      */
@@ -50,6 +64,16 @@ class Package
         $this->releaseVersion = $version;
     }
 
+    public function getDateTime()
+    {
+        if( $this->_datetime )
+            return $this->_datetime;
+
+        if( $this->date && $this->time ) {
+            return new DateTime( $this->date . ' ' . $this->time );
+        }
+    }
+
     public function setDateTime($datetime)
     {
         if ( is_string($datetime) ) {
@@ -60,9 +84,20 @@ class Package
         if( $datetime instanceof DateTime ) {
             $this->date = $datetime->format('Y-m-d');
             $this->time = $datetime->format('H:i:s');
+            $this->_datetime = $datetime;
         } else {
             throw new Exception("Invalid DateTime format.");
         }
+    }
+
+    public function setDate($date) 
+    {
+        $this->date = $date;
+    }
+
+    public function setTime($time)
+    {
+        $this->time = $time;
     }
 
 
