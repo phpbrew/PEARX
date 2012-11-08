@@ -56,6 +56,8 @@ class Installer
             $dir = dirname( $install->to );
             if( ! file_exists( $dir ) )
                 mkdir( $dir , 0755 , true );
+
+            // XXX: Add md5sum checks
             copy( $install->from , $install->to );
         }
         return $filelist;
@@ -67,6 +69,7 @@ class Installer
         $archive->extractTo( $targetPath );
         return $archive;
     }
+
 
 }
 
