@@ -55,11 +55,15 @@ class Parser
         $package->setApiStability( $this->xml->stability->api->__toString() );
         $package->setReleaseStability( $this->xml->stability->release->__toString() );
 
+        $package->setContents( $this->parseContents() );
         return $package;
     }
 
+
+
+
     /**
-     * need to support base installdir
+     * Need to support base installdir
      */
     public function traverseContents($children, $parentPath = null )
     {
@@ -108,7 +112,7 @@ class Parser
 
 
     /**
-     *
+     * The release file list provides install-as list for installer.
      */
     public function getPhpReleaseFileList()
     {
@@ -133,7 +137,7 @@ class Parser
      *
      * @return PEARX\PackageXml\ContentFile[]
      */
-    public function getContentFilesByRole($role)
+    public function getContentsByRole($role)
     {
         $files = $this->getContentFiles();
         return array_filter( $files , function($item) use ($role) { 
@@ -141,12 +145,28 @@ class Parser
         });
     }
 
+    /**
+     * Parse <contents> section and return content data 
+     * structure.
+     */
+    public function parseContents()
+    {
+        return $this->traverseContents( 
+            $this->xml->contents->children()
+        );
+    }
+
+
+    // DEPRECATED.
     public function getContentFiles()
     {
-        $xml = $this->xml;
-        $contents = $xml->contents;
-        $children = $contents->children();
-        return $this->traverseContents( $children );
+        return $this->parseContents();
+    }
+
+    // DEPRECATED.
+    public function getContentFilesByRole($role)
+    {
+        return $this->getContentsByRole($role);
     }
 
 }

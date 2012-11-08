@@ -47,9 +47,16 @@ class Package
 
     public $releaseStability;
 
+    public $contents = array();
+
     public function setName($name) 
     {
         $this->name = $name;
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 
     public function setVersion($version)
@@ -184,6 +191,22 @@ class Package
     {
         return $this->name;
     }
+
+    public function addContent(PackageXml\ContentFile $content)
+    {
+        $this->contents[] = $content;
+    }
+
+    public function setContents($contents)
+    {
+        $this->contents = $contents;
+    }
+
+    public function getContents()
+    {
+        return $this->contents;
+    }
+
 
 }
 
