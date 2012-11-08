@@ -77,7 +77,9 @@ class Package
     public function getDateTime()
     {
         if( $this->date && $this->time ) {
-            return new DateTime( $this->date . ' ' . $this->time );
+            return new DateTime( 
+                sprintf('%s %s', $this->date, $this->time)
+            );
         }
         if( $this->_datetime ) {
             return $this->_datetime;

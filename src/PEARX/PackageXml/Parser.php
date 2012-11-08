@@ -46,7 +46,6 @@ class Parser
         $package->setName( $this->xml->name->__toString() );
         $package->setSummary( $this->xml->summary->__toString() );
         $package->setDescription( $this->xml->description->__toString() );
-
         $package->setDate( $this->xml->date->__toString() );
         $package->setTime( $this->xml->time->__toString() );
         return $package;
