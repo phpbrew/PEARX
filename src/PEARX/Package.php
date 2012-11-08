@@ -7,7 +7,7 @@ class Package
 
     public $summary;
 
-    public $desc;
+    public $description;
 
     /**
      * @var Channel
