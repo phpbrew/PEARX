@@ -28,6 +28,27 @@ class ContentFile
         $this->file = $file;
     }
 
+
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+
     public function getInstallAs()
     {
         if( $this->installAs )

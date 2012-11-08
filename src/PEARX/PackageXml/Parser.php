@@ -14,6 +14,12 @@ use Exception;
 use PEARX\PackageXml\FileListInstall;
 use PEARX\PackageXml\ContentFile;
 
+
+/**
+ * PackageXml parser parses package.xml file
+ * and returns a package object that contains many 
+ * ContentFile, FileListInstall objects.
+ */
 class Parser
 {
     public $xml;
@@ -67,10 +73,10 @@ class Parser
                 $file = null;
                 if( $baseInstallDir ) {
                     $file = new ContentFile( $parentPath . $baseInstallDir . DIRECTORY_SEPARATOR . $filename );
-                }
-                else {
+                } else {
                     $file = new ContentFile( $parentPath . $filename );
                 }
+
                 if( $installAs )
                     $file->installAs = $parentPath . $installAs;
 
