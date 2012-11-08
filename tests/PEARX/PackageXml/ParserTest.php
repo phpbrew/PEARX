@@ -36,6 +36,13 @@ class ParserTest extends PHPUnit_Framework_TestCase
             ok($content->file);
             ok($content->role);
         }
+
+        $filelist = $package->getInstallFileList();
+        foreach( $filelist as $install ) {
+            ok($install->from);
+            ok($install->to);
+            ok(strpos($install->from,'//') === false);
+        }
     }
 
     public function testForCompatibility()

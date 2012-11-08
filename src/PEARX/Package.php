@@ -53,6 +53,8 @@ class Package
 
     public $optionalDependencies = array();
 
+    public $phpReleaseFileList = array();
+
     public function setName($name) 
     {
         $this->name = $name;
@@ -275,6 +277,40 @@ class Package
         $this->validateDependencyType($type);
         $dep['type'] = $type;
         $this->optionalDependencies[] = $dep;
+    }
+
+    public function addFileToReleaseFileList($name,$as)
+    {
+        $this->phpReleaseFileList[$name] = $as;
+    }
+
+    public function getReleaseFileList()
+    {
+        return $this->phpReleaseFileList;
+    }
+
+
+    public function getInstallFileList()
+    {
+        $installMap = $this->getReleaseFileList();
+        $filelist = array();
+        foreach( $this->getContents() as $file ) 
+        {
+            if( $file->role == 'php' ) {
+                $installFrom = $file->file;
+                if( isset($installMap[ $file->file ]) ) {
+                    $installAs = $installMap[ $file->file ];
+                } else {
+                    $installAs = $file->getInstallAs();
+                }
+
+                $filelist[] = (object) array(
+                    'from' => $installFrom,
+                    'to'   => $installAs,
+                );
+            }
+        }
+        return $filelist;
     }
 
 

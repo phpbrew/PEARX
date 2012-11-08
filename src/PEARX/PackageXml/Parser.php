@@ -68,9 +68,21 @@ class Parser
             foreach( $deps as $dep )
                 $package->addOptionalDependency($dep['type'],$dep);
         }
+
+        // parse php release tag
+        if( $phprelease = $this->xml->phprelease ) {
+            if( $phprelease->filelist ) {
+                foreach( $phprelease->filelist->children() as $install ) {
+                    $package->addFileToReleaseFileList(
+                        $install->name->__toString(),
+                        $install->as->__toString()
+                    );
+                }
+            }
+        }
+
         return $package;
     }
-
 
 
 
@@ -87,14 +99,11 @@ class Parser
 
                 $dirpath = $parentPath;
                 if( $dirname != '/' )
-                    $dirpath .= $dirname;
+                    $dirpath .= $dirname . DIRECTORY_SEPARATOR;
 
                 // $dirpath = $parentPath ? $parentPath . DIRECTORY_SEPARATOR . $dirname : $dirname;
                 if( $baseInstallDir )
-                    $dirpath .= $baseInstallDir . DIRECTORY_SEPARATOR;
-
-                if( $dirname != '/' )
-                    $dirpath .= DIRECTORY_SEPARATOR;
+                    $dirpath .= ltrim($baseInstallDir,DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
                 $subfiles = $this->traverseContents( $node->children(), $dirpath );
                 $files = array_merge( $files , $subfiles );
@@ -107,7 +116,7 @@ class Parser
                 $md5sum         = (string) @$node['md5sum'];
 
                 $file = $baseInstallDir
-                    ? new ContentFile( $parentPath . $baseInstallDir . DIRECTORY_SEPARATOR . $filename )
+                    ? new ContentFile( $parentPath . ltrim($baseInstallDir,DIRECTORY_SEPARATOR). $filename )
                     : new ContentFile( $parentPath . $filename );
 
                 if( $installAs )
@@ -131,9 +140,7 @@ class Parser
         // XXX: some packages like sfYAML uses phprelease tag to use 'install-as'
         $phprelease = $this->xml->phprelease;
         $filelist = array();
-
-        if( $phprelease->filelist ) 
-        {
+        if( $phprelease->filelist ) {
             foreach( $phprelease->filelist->children() as $install ) 
             {
                 $filelist[] = new FileListInstall( (string) $install['name'] , (string) @$install['as'] );
