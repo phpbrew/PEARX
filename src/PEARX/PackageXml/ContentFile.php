@@ -13,11 +13,15 @@ namespace PEARX\PackageXml;
 class ContentFile
 {
     /**
-     * follows the spec of http://pear.php.net/manual/en/guide.developers.package2.contents.php
+     * Follows the spec of http://pear.php.net/manual/en/guide.developers.package2.contents.php
      */
     public $file;
+
     public $installAs;
+
     public $role;
+
+    public $md5sum;
 
 
     /**

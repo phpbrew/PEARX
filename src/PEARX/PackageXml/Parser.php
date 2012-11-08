@@ -70,17 +70,14 @@ class Parser
                 $role           = (string) @$node['role'];
                 $md5sum         = (string) @$node['md5sum'];
 
-                $file = null;
-                if( $baseInstallDir ) {
-                    $file = new ContentFile( $parentPath . $baseInstallDir . DIRECTORY_SEPARATOR . $filename );
-                } else {
-                    $file = new ContentFile( $parentPath . $filename );
-                }
+                $file = $baseInstallDir
+                    ? new ContentFile( $parentPath . $baseInstallDir . DIRECTORY_SEPARATOR . $filename )
+                    : new ContentFile( $parentPath . $filename );
 
                 if( $installAs )
                     $file->installAs = $parentPath . $installAs;
 
-                $file->role = $role;
+                $file->setRole($role);
                 $file->md5sum = $md5sum;
                 $files[] = $file;
             }
