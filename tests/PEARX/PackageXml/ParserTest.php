@@ -9,6 +9,8 @@ class ParserTest extends PHPUnit_Framework_TestCase
 
         $package = $parser->parse('tests/data/package_xml/Twig/package.xml');
         ok($package);
+        ok($package->name);
+        ok($package->channel);
     }
 }
 

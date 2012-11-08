@@ -44,6 +44,8 @@ class Parser
         $package = new \PEARX\Package;
         $package->setChannel( $this->xml->channel->__toString() );
         $package->setName( $this->xml->name->__toString() );
+        $package->setSummary( $this->xml->summary->__toString() );
+        $package->setDescription( $this->xml->description->__toString() );
         return $this->xml;
     }
 

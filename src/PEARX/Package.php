@@ -10,7 +10,7 @@ class Package
     public $description;
 
     /**
-     * @var Channel
+     * @var PEARX\Channel
      */
     public $channel;
 
@@ -58,9 +58,15 @@ class Package
         $this->name = $name;
     }
 
-    public function setChannel($url)
+    public function setChannel($c)
     {
-        $this->channel = $url;
+        if( is_string($c) ) {
+            $this->channel = new Channel($c);
+        } elseif( $c instanceof Channel ) {
+            $this->channel = $c;
+        } else {
+            throw new Exception("Unknown channel argument.");
+        }
     }
 
     public function setLicense($license)
@@ -71,6 +77,11 @@ class Package
     public function setSummary($summary)
     {
         $this->summary = $summary;
+    }
+
+    public function setDescription($desc)
+    {
+        $this->description = $desc;
     }
 
     /**
