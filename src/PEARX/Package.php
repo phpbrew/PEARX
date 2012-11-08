@@ -49,6 +49,10 @@ class Package
 
     public $contents = array();
 
+    public $requiredDependencies = array();
+
+    public $optionalDependencies = array();
+
     public function setName($name) 
     {
         $this->name = $name;
@@ -205,6 +209,57 @@ class Package
     public function getContents()
     {
         return $this->contents;
+    }
+
+
+    public function validateDependencyType($type)
+    {
+        if(    $type != 'php'
+            && $type != 'pearinstaller'
+            && $type != 'extension'
+            && $type != 'package' )
+            throw new Exception('invalid pear dependency type.');
+
+    }
+
+    /**
+     * for php:
+     *
+     * $this->addRequiredDependency('php',array( 'min' => '5.2.7' ));
+     *
+     * for pearinstaller:
+     *
+     * $this->addRequiredDependency('pearinstaller',array( 'min' => '1.9.4' ));
+     *
+     * for package:
+     *
+     * $this->addRequiredDependency('package',array( 
+     *    'name' => 'Text_Template',
+     *    'channel' => 'pear.phpunit.de',
+     *    'min' => '1.1.1',
+     * ));
+     *
+     * $this->addRequiredDependency('extension',array(
+     *     'name' => 'reflection',
+     * ));
+     *
+     * $this->addRequiredDependency('extension',array(
+     *     'name' => 'spl',
+     * ));
+     */
+    public function addRequiredDependency($type,$dep)
+    {
+        // validate dep inforamtion
+        $this->validateDependencyType($type);
+        $dep['type'] = $type;
+        $this->requiredDependencies[] = $dep;
+    }
+
+    public function addOptionalDependency($type,$dep)
+    {
+        $this->validateDependencyType($type);
+        $dep['type'] = $type;
+        $this->optionalDependencies[] = $dep;
     }
 
 

@@ -56,6 +56,27 @@ class Parser
         $package->setReleaseStability( $this->xml->stability->release->__toString() );
 
         $package->setContents( $this->parseContents() );
+
+        if( $this->xml->dependencies->required ) {
+            foreach( $this->xml->dependencies->required->children() as $element ) {
+                $attrs = array();
+                foreach( $element->children() as $attr ) {
+                    $attrs[ $attr->getName() ] = $attr->__toString();
+                }
+                $package->addRequiredDependency($element->getName(),$attrs);
+            }
+        }
+
+        if( $this->xml->dependencies->optional ) {
+            foreach( $this->xml->dependencies->optional->children() as $element ) {
+                $attrs = array();
+                foreach( $element->children() as $attr ) {
+                    $attrs[ $attr->getName() ] = $attr->__toString();
+                }
+                $package->addOptionalDependency($element->getName(),$attrs);
+            }
+        }
+
         return $package;
     }
 

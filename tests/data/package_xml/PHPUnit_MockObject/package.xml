@@ -150,30 +150,30 @@ http://github.com/sebastianbergmann/phpunit-mock-objects/blob/master/README.mark
   </dir>
  </contents>
  <dependencies>
-  <required>
-   <php>
-    <min>5.2.7</min>
-   </php>
-   <pearinstaller>
-    <min>1.9.4</min>
-   </pearinstaller>
-   <package>
-    <name>Text_Template</name>
-    <channel>pear.phpunit.de</channel>
-    <min>1.1.1</min>
-   </package>
-   <extension>
-    <name>reflection</name>
-   </extension>
-   <extension>
-    <name>spl</name>
-   </extension>
-  </required>
-  <optional>
-   <extension>
-    <name>soap</name>
-   </extension>
-  </optional>
+     <required>
+         <php>
+             <min>5.2.7</min>
+         </php>
+         <pearinstaller>
+             <min>1.9.4</min>
+         </pearinstaller>
+         <package>
+             <name>Text_Template</name>
+             <channel>pear.phpunit.de</channel>
+             <min>1.1.1</min>
+         </package>
+         <extension>
+             <name>reflection</name>
+         </extension>
+         <extension>
+             <name>spl</name>
+         </extension>
+     </required>
+     <optional>
+         <extension>
+             <name>soap</name>
+         </extension>
+     </optional>
  </dependencies>
  <phprelease />
 </package>
