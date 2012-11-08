@@ -58,25 +58,16 @@ class Parser
         $package->setContents( $this->parseContents() );
 
         if( $this->xml->dependencies->required ) {
-            foreach( $this->xml->dependencies->required->children() as $element ) {
-                $attrs = array();
-                foreach( $element->children() as $attr ) {
-                    $attrs[ $attr->getName() ] = $attr->__toString();
-                }
-                $package->addRequiredDependency($element->getName(),$attrs);
-            }
+            $deps = $this->parseDependencyElement($this->xml->dependencies->required);
+            foreach( $deps as $dep )
+                $package->addRequiredDependency($dep['type'],$dep);
         }
 
         if( $this->xml->dependencies->optional ) {
-            foreach( $this->xml->dependencies->optional->children() as $element ) {
-                $attrs = array();
-                foreach( $element->children() as $attr ) {
-                    $attrs[ $attr->getName() ] = $attr->__toString();
-                }
-                $package->addOptionalDependency($element->getName(),$attrs);
-            }
+            $deps = $this->parseDependencyElement($this->xml->dependencies->optional);
+            foreach( $deps as $dep )
+                $package->addOptionalDependency($dep['type'],$dep);
         }
-
         return $package;
     }
 
@@ -178,6 +169,23 @@ class Parser
     }
 
 
+    public function parseDependencyElement($parent)
+    {
+        $children = $parent->children();
+        $deps = array();
+        foreach( $children as $element ) {
+            $attrs = array();
+            foreach( $element->children() as $attr ) {
+                $attrs[ $attr->getName() ] = $attr->__toString();
+            }
+            $attrs['type'] = $element->getName();
+            $deps[] = $attrs;
+        }
+        return $deps;
+    }
+
+
+
     // DEPRECATED.
     public function getContentFiles()
     {
@@ -189,6 +197,9 @@ class Parser
     {
         return $this->getContentsByRole($role);
     }
+
+
+
 
 }
 
