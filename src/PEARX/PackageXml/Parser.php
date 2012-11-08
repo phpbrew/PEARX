@@ -48,6 +48,13 @@ class Parser
         $package->setDescription( $this->xml->description->__toString() );
         $package->setDate( $this->xml->date->__toString() );
         $package->setTime( $this->xml->time->__toString() );
+
+        $package->setApiVersion( $this->xml->version->api->__toString() );
+        $package->setReleaseVersion( $this->xml->version->release->__toString() );
+
+        $package->setApiStability( $this->xml->stability->api->__toString() );
+        $package->setReleaseStability( $this->xml->stability->release->__toString() );
+
         return $package;
     }
 

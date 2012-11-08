@@ -43,6 +43,10 @@ class Package
 
     public $releaseVersion;
 
+    public $apiStability;
+
+    public $releaseStability;
+
     public function setName($name) 
     {
         $this->name = $name;
@@ -62,6 +66,22 @@ class Package
     public function setReleaseVersion($version)
     {
         $this->releaseVersion = $version;
+    }
+
+    public function setStability($s) 
+    {
+        $this->apiStability = $s;
+        $this->releaseStability = $s;
+    }
+
+    public function setReleaseStability($s)
+    {
+        $this->releaseStability = $s;
+    }
+
+    public function setApiStability($s)
+    {
+        $this->apiStability = $s;
     }
 
     public function getDate()
@@ -154,7 +174,6 @@ class Package
     {
         $this->description = $desc;
     }
-
 
     public function getDescription()
     {
