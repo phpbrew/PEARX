@@ -20,10 +20,31 @@ class Package
      */
     public $license;
 
+    public $authors = array();
+
+    public $apiVersion;
+
+    public $releaseVersion;
 
     public function setName($name) 
     {
         $this->name = $name;
+    }
+
+    public function setVersion($version)
+    {
+        $this->apiVersion = $version;
+        $this->releaseVersion = $version;
+    }
+
+    public function setApiVersion($version)
+    {
+        $this->apiVersion = $version;
+    }
+
+    public function setReleaseVersion($version)
+    {
+        $this->releaseVersion = $version;
     }
 
     public function setChannel($c)
@@ -51,7 +72,6 @@ class Package
     {
         $this->description = $desc;
     }
-
 
     public function getId()
     {
