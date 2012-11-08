@@ -14,6 +14,7 @@ use Exception;
 use PEARX\PackageXml\FileListInstall;
 use PEARX\PackageXml\ContentFile;
 
+class XmlException extends Exception { }
 
 /**
  * PackageXml parser parses package.xml file
@@ -32,8 +33,8 @@ class Parser
         elseif( file_exists($arg) ) {
             $this->xml = new SimpleXMLElement( file_get_contents( $arg ) );
         }
-        else  {
-            throw new Exception;
+        else {
+            throw new XmlException('Invalid xml argument.');
         }
     }
 
@@ -85,19 +86,34 @@ class Parser
         return $files;
     }
 
+
+
+    /**
+     *
+     */
     public function getPhpReleaseFileList()
     {
-        // xxx: some packages like sfYAML uses phprelease tag to use 'install-as'
+        // XXX: some packages like sfYAML uses phprelease tag to use 'install-as'
         $phprelease = $this->xml->phprelease;
         $filelist = array();
-        if( $phprelease->filelist ) {
-            foreach( $phprelease->filelist->children() as $install ) {
+
+        if( $phprelease->filelist ) 
+        {
+            foreach( $phprelease->filelist->children() as $install ) 
+            {
                 $filelist[] = new FileListInstall( (string) $install['name'] , (string) @$install['as'] );
             }
         }
         return $filelist;
     }
 
+    /**
+     * get FileContent objects by role
+     *
+     * @param string $role role string.
+     *
+     * @return PEARX\PackageXml\ContentFile[]
+     */
     public function getContentFilesByRole($role)
     {
         $files = $this->getContentFiles();
