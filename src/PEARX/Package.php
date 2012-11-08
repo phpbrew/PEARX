@@ -64,6 +64,16 @@ class Package
         $this->releaseVersion = $version;
     }
 
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    public function getTime()
+    {
+        return $this->time;
+    }
+
     public function getDateTime()
     {
         if( $this->date && $this->time ) {
