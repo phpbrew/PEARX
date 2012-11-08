@@ -68,6 +68,11 @@ class Package
         $this->license = $license;
     }
 
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
+    }
+
     /**
      * @param string $version version string.
      * @param string $stability stability string.
