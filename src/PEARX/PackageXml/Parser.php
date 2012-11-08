@@ -11,7 +11,6 @@
 namespace PEARX\PackageXml;
 use SimpleXMLElement;
 use Exception;
-use PEARX\PackageXml\FileListInstall;
 use PEARX\PackageXml\ContentFile;
 
 class XmlException extends Exception { }
@@ -19,7 +18,7 @@ class XmlException extends Exception { }
 /**
  * PackageXml parser parses package.xml file
  * and returns a package object that contains many 
- * ContentFile, FileListInstall objects.
+ * ContentFile objects.
  */
 class Parser
 {
@@ -143,7 +142,10 @@ class Parser
         if( $phprelease->filelist ) {
             foreach( $phprelease->filelist->children() as $install ) 
             {
-                $filelist[] = new FileListInstall( (string) $install['name'] , (string) @$install['as'] );
+                $filelist[] = (object) array(
+                    'file' => (string) $install['name'], 
+                    'as' => (string) @$install['as']
+                );
             }
         }
         return $filelist;

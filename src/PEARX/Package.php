@@ -290,14 +290,22 @@ class Package
     }
 
 
-    public function getInstallFileList()
+
+    /**
+     * Get filelist array for installer.
+     *
+     * @param string $sourceDir source directory path
+     */
+    public function getInstallFileList($sourceDir = null)
     {
         $installMap = $this->getReleaseFileList();
         $filelist = array();
         foreach( $this->getContents() as $file ) 
         {
             if( $file->role == 'php' ) {
-                $installFrom = $file->file;
+                $installFrom = $sourceDir 
+                    ? $sourceDir . DIRECTORY_SEPARATOR . $file->file
+                    : $file->file;
                 if( isset($installMap[ $file->file ]) ) {
                     $installAs = $installMap[ $file->file ];
                 } else {
