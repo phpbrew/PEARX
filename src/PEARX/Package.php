@@ -63,6 +63,11 @@ class Package
         $this->channel = $url;
     }
 
+    public function setLicense($license)
+    {
+        $this->license = $license;
+    }
+
     /**
      * @param string $version version string.
      * @param string $stability stability string.

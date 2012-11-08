@@ -25,10 +25,8 @@ class Parser
 {
     public $xml;
 
-    public function __construct($arg = null)
+    public function __construct()
     {
-        if ( $arg )
-            $this->parse($arg);
     }
 
     public function parse($arg) 
@@ -42,6 +40,11 @@ class Parser
         else {
             throw new XmlException('Invalid xml argument.');
         }
+
+        $package = new \PEARX\Package;
+        $package->setChannel( $this->xml->channel->__toString() );
+        $package->setName( $this->xml->name->__toString() );
+        return $this->xml;
     }
 
     /**
