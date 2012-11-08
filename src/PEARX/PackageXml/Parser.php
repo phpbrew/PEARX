@@ -40,37 +40,38 @@ class Parser
         else {
             throw new XmlException('Invalid xml argument.');
         }
+        $xml = $this->xml;
 
         $package = new \PEARX\Package;
-        $package->setChannel( $this->xml->channel->__toString() );
-        $package->setName( $this->xml->name->__toString() );
-        $package->setSummary( $this->xml->summary->__toString() );
-        $package->setDescription( $this->xml->description->__toString() );
-        $package->setDate( $this->xml->date->__toString() );
-        $package->setTime( $this->xml->time->__toString() );
+        $package->setChannel( $xml->channel->__toString() );
+        $package->setName( $xml->name->__toString() );
+        $package->setSummary( $xml->summary->__toString() );
+        $package->setDescription( $xml->description->__toString() );
+        $package->setDate( $xml->date->__toString() );
+        $package->setTime( $xml->time->__toString() );
 
-        $package->setApiVersion( $this->xml->version->api->__toString() );
-        $package->setReleaseVersion( $this->xml->version->release->__toString() );
+        $package->setApiVersion( $xml->version->api->__toString() );
+        $package->setReleaseVersion( $xml->version->release->__toString() );
 
-        $package->setApiStability( $this->xml->stability->api->__toString() );
-        $package->setReleaseStability( $this->xml->stability->release->__toString() );
+        $package->setApiStability( $xml->stability->api->__toString() );
+        $package->setReleaseStability( $xml->stability->release->__toString() );
 
-        $package->setContents( $this->parseContents() );
+        $package->setContents( $this->parseContents($xml) );
 
-        if( $this->xml->dependencies->required ) {
-            $deps = $this->parseDependencyElement($this->xml->dependencies->required);
+        if( $xml->dependencies->required ) {
+            $deps = $this->parseDependencyElement($xml->dependencies->required);
             foreach( $deps as $dep )
                 $package->addRequiredDependency($dep['type'],$dep);
         }
 
-        if( $this->xml->dependencies->optional ) {
-            $deps = $this->parseDependencyElement($this->xml->dependencies->optional);
+        if( $xml->dependencies->optional ) {
+            $deps = $this->parseDependencyElement($xml->dependencies->optional);
             foreach( $deps as $dep )
                 $package->addOptionalDependency($dep['type'],$dep);
         }
 
         // parse php release tag
-        if( $phprelease = $this->xml->phprelease ) {
+        if( $phprelease = $xml->phprelease ) {
             if( $phprelease->filelist ) {
                 foreach( $phprelease->filelist->children() as $install ) {
                     $package->addFileToReleaseFileList(
@@ -80,7 +81,6 @@ class Parser
                 }
             }
         }
-
         return $package;
     }
 
@@ -168,10 +168,10 @@ class Parser
      * Parse <contents> section and return content data 
      * structure.
      */
-    public function parseContents()
+    public function parseContents($xml)
     {
         return $this->traverseContents( 
-            $this->xml->contents->children()
+            $xml->contents->children()
         );
     }
 
@@ -196,7 +196,7 @@ class Parser
     // XXX: DEPRECATED.
     public function getContentFiles()
     {
-        return $this->parseContents();
+        return $this->parseContents($this->xml);
     }
 
     // XXX: DEPRECATED.
