@@ -1,5 +1,8 @@
 <?php
 namespace PEARX;
+use Exception;
+use DateTime;
+use PEARX\Channel;
 
 class Package
 {
@@ -46,6 +49,22 @@ class Package
     {
         $this->releaseVersion = $version;
     }
+
+    public function setDateTime($datetime)
+    {
+        if ( is_string($datetime) ) {
+            // parse string
+            $datetime = new DateTime($datetime);
+        }
+
+        if( $datetime instanceof DateTime ) {
+            $this->date = $datetime->format('Y-m-d');
+            $this->time = $datetime->format('H:i:s');
+        } else {
+            throw new Exception("Invalid DateTime format.");
+        }
+    }
+
 
     public function setChannel($c)
     {
