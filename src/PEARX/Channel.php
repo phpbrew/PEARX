@@ -36,9 +36,11 @@ class Channel
      */
     public $primary = array();
 
+
+    /**
+     * @var string REST version
+     */
     public $rest; // Latest REST version
-
-
 
 
     public $cache;

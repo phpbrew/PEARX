@@ -50,7 +50,7 @@ class Category
         $packageNodes = $xml->getElementsByTagName('pi');
         $packages = array();
         foreach( $packageNodes as $node ) {
-            $package = new Package;
+            $package = new PackageCollection;
 
             $p = $node->getElementsByTagName('p')->item(0);
             $package->name    = $p->getElementsByTagName('n')->item(0)->nodeValue;
