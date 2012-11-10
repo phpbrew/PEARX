@@ -10,11 +10,11 @@
     <email>cornelius.howl@gmail.com</email>
     <active>yes</active>
   </lead>
-  <date>2012-11-09</date>
-  <time>02:39:41</time>
+  <date>2012-11-10</date>
+  <time>14:38:17</time>
   <version>
-    <release>1.2.0</release>
-    <api>1.2.0</api>
+    <release>1.2.1</release>
+    <api>1.2.1</api>
   </version>
   <stability>
     <release>stable</release>
@@ -55,7 +55,7 @@
       <file name="src/PEARX/Channel.php" role="php" md5sum="a39653219b9778b638d17e9924a307d1"/>
       <file name="src/PEARX/ChannelParser.php" role="php" md5sum="7c5b3c92273ef7afd89f7fa3b147ce98"/>
       <file name="src/PEARX/Core.php" role="php" md5sum="e9029e883f8dfc9e7d63ec8f6ceff42f"/>
-      <file name="src/PEARX/Installer.php" role="php" md5sum="284f4c27600a27b219325e621d6968ce"/>
+      <file name="src/PEARX/Installer.php" role="php" md5sum="81ec5a78ebc102b61d3f201270f65cc6"/>
       <file name="src/PEARX/Package.php" role="php" md5sum="2ec472d451d5fe1126c6c04c509c6c9d"/>
       <file name="src/PEARX/PackageCollection.php" role="php" md5sum="5bd0374c113ae773ec578566547bcd45"/>
       <file name="src/PEARX/PackageXml/ContentFile.php" role="php" md5sum="7d2947a90d6c63091ee6549360f2a5c8"/>
