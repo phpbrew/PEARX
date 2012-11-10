@@ -1,7 +1,7 @@
 PEARX
 =====
 
-PEARX - A Non-PEAR-Installer-Dependent PEAR Channel Library.
+PEARX - A Non-PEAR-Dependent PEAR library for PHP 5.3 (PSR-0 compliance)
 
 Features:
 
@@ -11,7 +11,7 @@ Features:
 - Faster than the original PEAR code.
 - Can run without PEAR dependency.
 - Support Cache.
-- PSR-0 compliant.
+- PSR-0 compliance.
 
 ## Install
 
