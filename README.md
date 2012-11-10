@@ -22,6 +22,8 @@ Features:
 
 ## Synopsis
 
+Channel operations:
+
 ```php
 <?php
     use CacheKit\FileSystemCache;
@@ -69,6 +71,34 @@ To use PEARX with Cache and CurlDownlaoder
         'cache' => $cache,
         'downloader' => $d,
     ));
+```
+
+Parsing Package XML:
+
+```php
+    $parser = new PEARX\PackageXml\Parser;
+
+    $package = $parser->parse($file);
+    ok($package->getName());
+    ok($package->getChannel());
+    ok($package->getDate());
+    ok($package->getTime());
+    ok($package->getDateTime() );
+
+    /* ContentFile objects */
+    $contents = $package->getContents();
+    ok($contents);
+
+    foreach( $contents as $content ) {
+        ok($content->file);
+        ok($content->role);
+    }
+
+    $filelist = $package->getInstallFileList();
+    foreach( $filelist as $install ) {
+        ok($install->from);
+        ok($install->to);
+    }
 ```
 
 
