@@ -37,7 +37,7 @@ class Installer
         $distFile = basename($distPath);
         $packageDir = $this->getWorkspaceForPackage($distPath);
 
-        $this->extract($distFile,$packageDir);
+        $this->extract($distPath,$packageDir);
 
         if( ! file_exists($targetDir) )
             mkdir( $targetDir , 0755, true );
