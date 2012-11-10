@@ -5,9 +5,13 @@ PEARX - A Non-PEAR-Installer-Dependent PEAR Channel Library.
 
 Features:
 
-- Fast
-- Non-PEAR dependency
-- Support Cache
+- Package XML parser.
+- Package XML builder.
+- Package XML installer.
+- Faster than the original PEAR code.
+- Can run without PEAR dependency.
+- Support Cache.
+- PSR-0 compliant.
 
 ## Install
 
