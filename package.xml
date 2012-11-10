@@ -10,11 +10,11 @@
     <email>cornelius.howl@gmail.com</email>
     <active>yes</active>
   </lead>
-  <date>2012-11-10</date>
-  <time>14:38:17</time>
+  <date>2012-11-11</date>
+  <time>06:39:56</time>
   <version>
-    <release>1.2.1</release>
-    <api>1.2.1</api>
+    <release>1.2.2</release>
+    <api>1.2.2</api>
   </version>
   <stability>
     <release>stable</release>
@@ -36,21 +36,21 @@
       <file name="tests/PEARX/PackageXml/ParserTest.php" role="test" md5sum="cd77e9ea33e3063f2cb341a31f764dae"/>
       <file name="tests/tmp/http_pear_corneltek_com_channel_xml" role="test" md5sum="f0444e1a159c8cfdbfc80f37b0aac159"/>
       <file name="tests/tmp/http_pear_corneltek_com_rest_c_categories_xml" role="test" md5sum="071f414c7df6eb7f4a371a541ed95201"/>
-      <file name="tests/tmp/http_pear_corneltek_com_rest_c_Default_packagesinfo_xml" role="test" md5sum="6d77fb11029f1ea6bdc034c2ed3be0ee"/>
+      <file name="tests/tmp/http_pear_corneltek_com_rest_c_Default_packagesinfo_xml" role="test" md5sum="9a80b563e03b91c8ae61b7fc218dedfd"/>
       <file name="tests/tmp/http_pear_php_net_channel_xml" role="test" md5sum="bba3c76dc40240dcae23af5da851ec71"/>
       <file name="tests/tmp/http_pear_php_net_rest_c_Audio_packagesinfo_xml" role="test" md5sum="53013642b7b55869d2cf6c33725669fc"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Authentication_packagesinfo_xml" role="test" md5sum="065295171b88390caf53eccc1de8f409"/>
+      <file name="tests/tmp/http_pear_php_net_rest_c_Authentication_packagesinfo_xml" role="test" md5sum="0506af2f1f38ffacbf237429fb4938a9"/>
       <file name="tests/tmp/http_pear_php_net_rest_c_Benchmarking_packagesinfo_xml" role="test" md5sum="4096c7cc99c2ec27933488c9a33e7288"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Caching_packagesinfo_xml" role="test" md5sum="860c8793e359fdd8379210dce81c6c63"/>
+      <file name="tests/tmp/http_pear_php_net_rest_c_Caching_packagesinfo_xml" role="test" md5sum="43f4950eef914faac1020da1ea2fea1a"/>
       <file name="tests/tmp/http_pear_php_net_rest_c_categories_xml" role="test" md5sum="973eb455130215833b448b8d60d8ba40"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Configuration_packagesinfo_xml" role="test" md5sum="d8c09915911df47e0269adab62c8ad8a"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Console_packagesinfo_xml" role="test" md5sum="f9e7b17551b51b176443126489cf1697"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Database_packagesinfo_xml" role="test" md5sum="3441030900acbd0dab0116e40da6d04f"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_Date_2Band_2BTime_packagesinfo_xml" role="test" md5sum="83654b7836857717a48a16c4ffd5d59e"/>
+      <file name="tests/tmp/http_pear_php_net_rest_c_Configuration_packagesinfo_xml" role="test" md5sum="dbf3ed2a00fba62a5b2fba7a05e795d6"/>
+      <file name="tests/tmp/http_pear_php_net_rest_c_Console_packagesinfo_xml" role="test" md5sum="6c4b8fd88554872b119a6553fdf23a5c"/>
+      <file name="tests/tmp/http_pear_php_net_rest_c_Database_packagesinfo_xml" role="test" md5sum="2adcc45673952c176044738e5140ef21"/>
+      <file name="tests/tmp/http_pear_php_net_rest_c_Date_2Band_2BTime_packagesinfo_xml" role="test" md5sum="ecde5e19d119f5f3484bbfed4e8bcc59"/>
       <file name="tests/tmp/http_pear_php_net_rest_c_Encryption_packagesinfo_xml" role="test" md5sum="523ba7093efa1f59fb69817a90ac738f"/>
       <file name="tests/tmp/http_pear_php_net_rest_c_Event_packagesinfo_xml" role="test" md5sum="35f72ebe5d679b372b230322078aece9"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_File_2BFormats_packagesinfo_xml" role="test" md5sum="9b93a44e4781f56a6e0c0689010c09a3"/>
-      <file name="tests/tmp/http_pear_php_net_rest_c_File_2BSystem_packagesinfo_xml" role="test" md5sum="f276a79f17f788691f9247d6a653cb10"/>
+      <file name="tests/tmp/http_pear_php_net_rest_c_File_2BFormats_packagesinfo_xml" role="test" md5sum="07e55dab186914899fca1e47b1667e42"/>
+      <file name="tests/tmp/http_pear_php_net_rest_c_File_2BSystem_packagesinfo_xml" role="test" md5sum="2eb45ef914ed6f7a50601d72703edca5"/>
       <file name="src/PEARX/Category.php" role="php" md5sum="2a1de9272848403f88895498084c8b08"/>
       <file name="src/PEARX/Channel.php" role="php" md5sum="a39653219b9778b638d17e9924a307d1"/>
       <file name="src/PEARX/ChannelParser.php" role="php" md5sum="7c5b3c92273ef7afd89f7fa3b147ce98"/>
@@ -60,7 +60,7 @@
       <file name="src/PEARX/PackageCollection.php" role="php" md5sum="5bd0374c113ae773ec578566547bcd45"/>
       <file name="src/PEARX/PackageXml/ContentFile.php" role="php" md5sum="7d2947a90d6c63091ee6549360f2a5c8"/>
       <file name="src/PEARX/PackageXml/Generator.php" role="php" md5sum="701c66d2acf87d1bf658b198a08e9df8"/>
-      <file name="src/PEARX/PackageXml/Parser.php" role="php" md5sum="5ead8137d29e611ad268c2d9a7d2f659"/>
+      <file name="src/PEARX/PackageXml/Parser.php" role="php" md5sum="38a35c3922f118ccaadbd5075f276acd"/>
       <file name="src/PEARX/Utils.php" role="php" md5sum="36dc09cc50971c50bf24df76bb169103"/>
     </dir>
   </contents>
