@@ -3,8 +3,16 @@
 class ChannelTest extends PHPUnit_Framework_TestCase
 {
 
+    public function testPackageReleaseInfoFinderWithLatest()
+    {
+        $channel = new PEARX\Channel('pecl.php.net');
+        ok($channel);
 
-    public function testPackageFindPear()
+        $xml = $channel->fetchPackageReleaseXml('apc','latest');
+        ok($xml);
+    }
+
+    public function testPackageFindPearWithFileSystemCache()
     {
         $cache = new CacheKit\FileSystemCache(array(
             'expiry' => 10,
@@ -27,7 +35,7 @@ class ChannelTest extends PHPUnit_Framework_TestCase
         ok( $package->license );
     }
 
-    public function testPackageFind()
+    public function testPackageFindWithFileSystemCache()
     {
         $cache = new CacheKit\FileSystemCache(array(
             'expiry' => 10,
