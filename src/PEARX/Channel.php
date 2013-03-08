@@ -97,6 +97,11 @@ class Channel
             // get version info
             $version = file_get_contents($url . '/' . $version . '.txt' );
         }
+
+        if( ! $version ) {
+            throw new Exception("Invalid version: $version");
+        }
+
         $url = $url . '/' . $version . '.xml';
         $xmlStr = $this->core->request($url);
 

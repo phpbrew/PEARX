@@ -10,6 +10,9 @@ class ChannelTest extends PHPUnit_Framework_TestCase
 
         $xml = $channel->fetchPackageReleaseXml('apc','latest');
         ok($xml);
+
+        $xml = $channel->fetchPackageReleaseXml('xdebug','2.2.1');
+        ok($xml);
     }
 
     public function testPackageFindPearWithFileSystemCache()
