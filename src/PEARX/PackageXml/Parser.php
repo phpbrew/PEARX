@@ -73,10 +73,7 @@ class Parser
         if( $phprelease = $xml->phprelease ) {
             if( $phprelease->filelist ) {
                 foreach( $phprelease->filelist->children() as $install ) {
-                    $package->addFileToReleaseFileList(
-                        $install->name->__toString(),
-                        $install->as->__toString()
-                    );
+                    $package->addFileToReleaseFileList( $install['name']->__toString(), $install['as']->__toString() );
                 }
             }
         }
