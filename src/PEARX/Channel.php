@@ -85,6 +85,33 @@ class Channel
         return rtrim($this->primary[ $this->rest ],'/');
     }
 
+    public function fetchPackageReleaseXml($packageName, $version = 'stable')
+    {
+        $baseUrl = $this->getRestBaseUrl();
+        $url = "$baseUrl/r/" . strtolower($packageName);
+
+        if( $version === 'stable'
+            || $version === 'latest'
+            || $version === 'beta' ) 
+        {
+            // get version info
+            $version = file_get_contents($url . '/' . $version . '.txt' );
+        }
+
+        if( ! $version ) {
+            throw new Exception("Invalid version: $version");
+        }
+
+        $url = $url . '/' . $version . '.xml';
+        $xmlStr = $this->core->request($url);
+
+        // libxml_use_internal_errors(true);
+        $xml = Utils::create_dom();
+        if( false === $xml->loadXml( $xmlStr ) ) {
+            throw new Exception("Error in XMl document: $url");
+        }
+        return $xml;
+    }
 
     /**
      * fetch channel.xml from PEAR channel server.
@@ -151,6 +178,12 @@ class Channel
         return $list;
     }
 
+
+    /**
+     * Get all packages from this channel.
+     *
+     * @return Package[]
+     */
     public function getPackages()
     {
         $packages = array();
@@ -159,6 +192,7 @@ class Channel
         }
         return $packages;
     }
+
 
     public function findPackage($name)
     {

@@ -25,33 +25,40 @@ Features:
 Channel operations:
 
 ```php
-<?php
-    use CacheKit\FileSystemCache;
+use CacheKit\FileSystemCache;
 
-    $channel = new PEARX\Channel($host);
-    $categories = $channel->getCategories();
+$channel = new PEARX\Channel($host);
 
-    foreach( $categories as $category ) {
-        // $category->name
-        // $category->infoUrl
 
-        $packages = $category->getPackages();
-        foreach( $packages as $package ) {
-            $package->name;
-            $package->summary;
-            $package->desc;
-            $package->channel;
-            $package->license;
-            $package->deps;
-            $package->releases;
+// find package from the remote pear host
+$package = $channel->findPackage('PEAR');
 
-            $package->stable; // version string
-            $package->alpha;  // version string
-            $package->latest; // version string
 
-            $stability = $package->getRelease('0.0.1');
-        }
+
+// traverse pear channel categories
+$categories = $channel->getCategories();
+
+foreach( $categories as $category ) {
+    // $category->name
+    // $category->infoUrl
+
+    $packages = $category->getPackages();
+    foreach( $packages as $package ) {
+        $package->name;
+        $package->summary;
+        $package->desc;
+        $package->channel;
+        $package->license;
+        $package->deps;
+        $package->releases;
+
+        $package->stable; // version string
+        $package->alpha;  // version string
+        $package->latest; // version string
+
+        $stability = $package->getRelease('0.0.1');
     }
+}
 ```
 
 
