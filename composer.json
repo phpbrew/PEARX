@@ -1,5 +1,5 @@
 {
-    "name": "c9s/PEARX",
+    "name": "corneltek/pearx",
     "homepage": "http://github.com/c9s/PEARX",
     "description": "PEAR channel client",
     "require": {
