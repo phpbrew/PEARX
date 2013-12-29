@@ -3,7 +3,11 @@
     "homepage": "http://github.com/c9s/PEARX",
     "description": "PEAR channel client",
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "corneltek/cachekit": "~1"
+    },
+    "require-dev": {
+        "corneltek\/phpunit-testmore": "dev-master"
     },
     "license": "MIT",
     "authors": [
