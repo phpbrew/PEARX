@@ -55,6 +55,17 @@ class Parser
         $package->setApiStability( $xml->stability->api->__toString() );
         $package->setReleaseStability( $xml->stability->release->__toString() );
 
+        if ( $extName = $xml->providesextension->__toString() ) {
+            $package->setProvidesExtension($extName);
+        }
+        if ( $xml->zendextsrcrelease ) {
+            $package->setZendExtSrcRelease();
+        }
+
+        /*
+        $package->setZendExtSrcRelease();
+         */
+
         $package->setContents( $this->parseContents($xml) );
 
         if( $xml->dependencies->required ) {

@@ -55,6 +55,10 @@ class Package
 
     public $phpReleaseFileList = array();
 
+    public $providesExtension;
+
+    public $zendExtSrcRelease;
+
     public function setName($name) 
     {
         $this->name = $name;
@@ -107,6 +111,23 @@ class Package
     {
         $this->apiStability = $s;
     }
+
+    public function setProvidesExtension($extName) {
+        $this->provideExtension = $extName;
+    }
+
+    public function setZendExtSrcRelease() {
+        $this->zendExtSrcRelease = true;
+    }
+
+    public function getProvidesExtension() {
+        return $this->provideExtension;
+    }
+
+    public function getZendExtSrcRelease() {
+        return $this->zendExtSrcRelease;
+    }
+
 
     public function getDate()
     {
