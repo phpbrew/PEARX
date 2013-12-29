@@ -45,6 +45,22 @@ class ParserTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    public function testForExtension()
+    {
+        $parser = new PEARX\PackageXml\Parser;
+        ok($parser);
+
+        $package = $parser->parse('tests/data/package_xml/xdebug/package.xml');
+        ok($package);
+        ok($package->name);
+        ok($package->getChannel());
+        ok($package->getDate());
+        ok($package->getTime());
+        ok($package->getDateTime() );
+        is('xdebug',$package->getProvidesExtension());
+        ok($package->getZendExtSrcRelease());
+    }
+
     public function testForCompatibility()
     {
         $parser = new PEARX\PackageXml\Parser;
