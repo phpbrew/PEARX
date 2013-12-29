@@ -6,8 +6,8 @@ class ChannelParserTest extends PHPUnit_Framework_TestCase
     function getChannels()
     {
         return array( 
-            // array( 'http://pear.php.net/channel.xml' ),
-            array( 'http://pear.zfcampus.org/channel.xml' ),
+            array( 'http://pear.php.net/channel.xml' ),
+            // array( 'http://pear.zfcampus.org/channel.xml' ),
         );
     }
 
