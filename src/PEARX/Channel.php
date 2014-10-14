@@ -95,10 +95,11 @@ class Channel
             || $version === 'beta' ) 
         {
             // get version info
-            $version = file_get_contents($url . '/' . $version . '.txt' );
+            // use @ to suppress the warning of 404 not found
+            $version = @file_get_contents($url . '/' . $version . '.txt' );
         }
 
-        if( ! $version ) {
+        if (! $version) {
             throw new Exception("Invalid version: $version");
         }
 
