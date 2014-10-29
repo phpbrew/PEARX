@@ -100,7 +100,7 @@ class Channel
         }
 
         if (! $version) {
-            throw new Exception("Invalid version: $version");
+            throw new Exception("Invalid package version: $packageName @ $version");
         }
 
         $url = $url . '/' . $version . '.xml';
