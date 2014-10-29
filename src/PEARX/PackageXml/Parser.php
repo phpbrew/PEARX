@@ -58,9 +58,10 @@ class Parser
         if ($extName = $xml->providesextension->__toString()) {
             $package->setProvidesExtension($extName);
         }
-        if ($releaseInfo = $xml->extsrcrelease) {
-            foreach ($releaseInfo->configureoption as $opt) {
-                $package->addConfigureOptions($opt->name, $opt->prompt, $opt->default);
+
+        if ($extsrcrelease = $xml->extsrcrelease) {
+            foreach ($extsrcrelease->children() as $opt) {
+                $package->addConfigureOption($opt['name'], $opt['prompt'], $opt['default']);
             }
         }
 

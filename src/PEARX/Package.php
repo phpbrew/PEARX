@@ -365,7 +365,7 @@ class Package
         return $filelist;
     }
 
-    public function addConfigureOptions($optName, $prompt, $default = NULL) {
+    public function addConfigureOption($optName, $prompt, $default = NULL) {
         $this->configureOptions[] = array(
             'name' => $optName,
             'prompt' => $prompt,
@@ -373,5 +373,8 @@ class Package
         );
     }
 
+    public function getConfigureOptions() {
+        return $this->configureOptions;
+    }
 }
 

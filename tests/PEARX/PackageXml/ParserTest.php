@@ -61,6 +61,24 @@ class ParserTest extends PHPUnit_Framework_TestCase
         ok($package->getZendExtSrcRelease());
     }
 
+    public function testConfigureOptions() 
+    {
+        $parser = new PEARX\PackageXml\Parser;
+        ok($parser);
+
+        $package = $parser->parse('tests/data/package_xml/apcu/package.xml');
+        $options = $package->getConfigureOptions();
+        $this->assertNotEmpty($options);
+
+        count_ok( 2, $options);
+        foreach($options as $option) {
+            ok( isset($option['name']) );
+            ok( isset($option['prompt']) );
+            ok( isset($option['default']) );
+        }
+
+    }
+
     public function testForCompatibility()
     {
         $parser = new PEARX\PackageXml\Parser;
