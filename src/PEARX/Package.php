@@ -59,6 +59,14 @@ class Package
 
     public $zendExtSrcRelease;
 
+
+    /**
+     * [ [ name => ... , prompt => ..., default => ... ], .... ]
+     *
+     */
+    public $configureOptions = array();
+
+
     public function setName($name) 
     {
         $this->name = $name;
@@ -357,6 +365,13 @@ class Package
         return $filelist;
     }
 
+    public function addConfigureOptions($optName, $prompt, $default = NULL) {
+        $this->configureOptions[] = array(
+            'name' => $optName,
+            'prompt' => $prompt,
+            'default' => $default,
+        );
+    }
 
 }
 
