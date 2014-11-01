@@ -42,18 +42,30 @@ class Parser
         $xml = $this->xml;
 
         $package = new \PEARX\Package;
-        $package->setChannel( $xml->channel->__toString() );
+
+        if ($xml->channel) {
+            $package->setChannel( $xml->channel->__toString() );
+        }
+
         $package->setName( $xml->name->__toString() );
         $package->setSummary( $xml->summary->__toString() );
         $package->setDescription( $xml->description->__toString() );
         $package->setDate( $xml->date->__toString() );
         $package->setTime( $xml->time->__toString() );
 
-        $package->setApiVersion( $xml->version->api->__toString() );
-        $package->setReleaseVersion( $xml->version->release->__toString() );
+        if ($xml->version) {
+            if ($xml->version->api) {
+                $package->setApiVersion( $xml->version->api->__toString() );
+            }
+            if ($xml->version->release) {
+                $package->setReleaseVersion( $xml->version->release->__toString() );
+            }
+        }
 
-        $package->setApiStability( $xml->stability->api->__toString() );
-        $package->setReleaseStability( $xml->stability->release->__toString() );
+        if ($xml->stability) {
+            $package->setApiStability( $xml->stability->api->__toString() );
+            $package->setReleaseStability( $xml->stability->release->__toString() );
+        }
 
         if ($extName = $xml->providesextension->__toString()) {
             $package->setProvidesExtension($extName);
@@ -61,7 +73,7 @@ class Parser
 
         if ($extsrcrelease = $xml->extsrcrelease) {
             foreach ($extsrcrelease->children() as $opt) {
-                $package->addConfigureOption($opt['name'], $opt['prompt'], $opt['default']);
+                $package->addConfigureOption( (string)$opt['name'], (string)$opt['prompt'], (string)$opt['default']);
             }
         }
 
@@ -72,8 +84,11 @@ class Parser
         /*
         $package->setZendExtSrcRelease();
          */
-
-        $package->setContents( $this->parseContents($xml) );
+        if ($xml->contents) {
+            if ($contents = $this->parseContents($xml)) {
+                $package->setContents($contents);
+            }
+        }
 
         if( $xml->dependencies->required ) {
             $deps = $this->parseDependencyElement($xml->dependencies->required);
@@ -106,20 +121,23 @@ class Parser
     public function traverseContents($children, $parentPath = null )
     {
         $files = array();
-        foreach( $children as $node ) {
+        if (!$children)
+            return $files;
+
+        foreach($children as $node) {
             if( $node->getName() == 'dir' ) {
                 $dirname = $node['name'];
                 $baseInstallDir = @$node['baseinstalldir'];
 
                 $dirpath = $parentPath;
-                if( $dirname != '/' )
+                if ($dirname != '/')
                     $dirpath .= $dirname . DIRECTORY_SEPARATOR;
 
                 // $dirpath = $parentPath ? $parentPath . DIRECTORY_SEPARATOR . $dirname : $dirname;
-                if( $baseInstallDir )
+                if ($baseInstallDir)
                     $dirpath .= ltrim($baseInstallDir,DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
-                $subfiles = $this->traverseContents( $node->children(), $dirpath );
+                $subfiles = $this->traverseContents($node->children(), $dirpath );
                 $files = array_merge( $files , $subfiles );
             }
             elseif( $node->getName() == 'file' ) {

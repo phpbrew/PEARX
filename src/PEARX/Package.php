@@ -121,7 +121,7 @@ class Package
     }
 
     public function setProvidesExtension($extName) {
-        $this->provideExtension = $extName;
+        $this->providesExtension = $extName;
     }
 
     public function setZendExtSrcRelease() {
@@ -129,7 +129,7 @@ class Package
     }
 
     public function getProvidesExtension() {
-        return $this->provideExtension;
+        return $this->providesExtension;
     }
 
     public function getZendExtSrcRelease() {
@@ -366,7 +366,7 @@ class Package
     }
 
     public function addConfigureOption($optName, $prompt, $default = NULL) {
-        $this->configureOptions[] = array(
+        $this->configureOptions[] = (object) array(
             'name' => $optName,
             'prompt' => $prompt,
             'default' => $default,
