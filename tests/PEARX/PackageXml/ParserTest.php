@@ -72,9 +72,9 @@ class ParserTest extends PHPUnit_Framework_TestCase
 
         count_ok( 2, $options);
         foreach($options as $option) {
-            ok( isset($option->name]) );
-            ok( isset($option->prompt]) );
-            ok( isset($option->default]) );
+            ok( isset($option->name) );
+            ok( isset($option->prompt) );
+            ok( isset($option->default) );
         }
 
     }
