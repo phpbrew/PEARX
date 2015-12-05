@@ -96,11 +96,10 @@ class Channel
         {
             // get version info
             // use @ to suppress the warning of 404 not found
-            $version = @file_get_contents($url . '/' . $version . '.txt' );
-        }
-
-        if (! $version) {
-            throw new Exception("Invalid package version: $packageName @ $version");
+            $ret = @file_get_contents($url . '/' . $version . '.txt');
+            if ($ret === false) {
+                throw new Exception("Invalid package version: $packageName with version '$version'.");
+            }
         }
 
         $url = $url . '/' . $version . '.xml';
