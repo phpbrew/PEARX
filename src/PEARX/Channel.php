@@ -100,6 +100,7 @@ class Channel
             if ($ret === false) {
                 throw new Exception("Invalid package version: $packageName with version '$version'.");
             }
+            $version = $ret;
         }
 
         $url = $url . '/' . $version . '.xml';
