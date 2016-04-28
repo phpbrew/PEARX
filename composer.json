@@ -4,8 +4,8 @@
     "description": "PEAR channel client",
     "require": {
         "php": ">=5.3.0",
-        "corneltek/cachekit": "~1",
-        "corneltek/curlkit": "*"
+        "corneltek/cachekit": "^1",
+        "corneltek/curlkit": "dev-master"
     },
     "require-dev": {
         "corneltek/phpunit-testmore": "dev-master"
