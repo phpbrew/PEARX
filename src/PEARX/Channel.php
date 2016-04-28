@@ -85,6 +85,7 @@ class Channel
         return rtrim($this->primary[ $this->rest ],'/');
     }
 
+
     public function fetchPackageReleaseXml($packageName, $version = 'stable')
     {
         $baseUrl = $this->getRestBaseUrl();
@@ -94,9 +95,8 @@ class Channel
             || $version === 'latest'
             || $version === 'beta' ) 
         {
-            // get version info
-            // use @ to suppress the warning of 404 not found
-            $ret = @file_get_contents($url . '/' . $version . '.txt');
+            // Get version info
+            $ret = file_get_contents($url . '/' . $version . '.txt');
             if ($ret === false) {
                 throw new Exception("Invalid package version: $packageName with version '$version'.");
             }
