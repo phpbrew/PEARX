@@ -5,7 +5,7 @@
     "require": {
         "php": ">=5.3.0",
         "corneltek/cachekit": "^1",
-        "corneltek/curlkit": "dev-master"
+        "corneltek/curlkit": "1.0.x-dev"
     },
     "require-dev": {
         "corneltek/phpunit-testmore": "dev-master"
