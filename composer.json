@@ -8,6 +8,7 @@
         "corneltek/curlkit": "1.0.x-dev"
     },
     "require-dev": {
+        "phpunit/phpunit": "^5.7",
         "corneltek/phpunit-testmore": "dev-master"
     },
     "license": "MIT",
