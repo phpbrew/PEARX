@@ -267,16 +267,19 @@ class Package
         });
     }
 
-
-
     public function validateDependencyType($type)
     {
-        if(    $type != 'php'
-            && $type != 'pearinstaller'
-            && $type != 'extension'
-            && $type != 'package' )
-            throw new Exception('invalid pear dependency type.');
+        switch ($type) {
+            case 'arch':
+            case 'extension':
+            case 'os':
+            case 'package':
+            case 'pearinstaller':
+            case 'php':
+                return;
+        }
 
+        throw new Exception('Unsupported pear dependency type: ' . $type);
     }
 
     /**
