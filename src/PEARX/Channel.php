@@ -1,17 +1,18 @@
 <?php
+
 namespace PEARX;
-use PEARX\ChannelParser;
+
 use DOMDocument;
 use Exception;
-use PEARX\Core;
 
 /**
+ * ````php
  * $channel = new PEARX\Channel( 'pear.php.net', array(
  *    'cache' => ....
  * ));
  *
  * $channel->getPackages();
- *
+ * ```
  */
 class Channel
 {
@@ -21,10 +22,9 @@ class Channel
     public $name;
 
     /**
-     * @var string suggestedalias
+     * @var string suggested alias
      */
     public $alias;
-
 
     /**
      * @var string summary
@@ -36,12 +36,10 @@ class Channel
      */
     public $primary = array();
 
-
     /**
      * @var string REST version
      */
     public $rest; // Latest REST version
-
 
     public $cache;
 
@@ -58,43 +56,61 @@ class Channel
 
     public $core;
 
+    private $host;
+    private $init = false;
+
+    /**
+     * @param string $host
+     * @param array $options
+     */
     public function __construct($host, $options = array() )
     {
         $this->core = new Core( $options );
-        $this->channelXml = $this->fetchChannelXml( $host );
-
-        $parser = new ChannelParser;
-        $info = $parser->parse( $this->channelXml );
-
-        $this->name = $info->name;
-        $this->summary = $info->summary;
-        $this->alias = $info->alias;
-        $this->primary = $info->primary;
-        $this->rest = $info->rest;
+        $this->host = $host;
     }
 
+    /**
+     * @return string
+     */
     public function getBaseUrl()
     {
+        $this->init();
+
         return $this->scheme . '://' . $this->name;
     }
 
+    /**
+     * @param string $version
+     *
+     * @return string
+     */
     public function getRestBaseUrl($version = null)
     {
-        if( $version && $this->primary[$version] )
+        $this->init();
+
+        if( $version && $this->primary[$version] ) {
             return rtrim($this->primary[ $version ],'/');
+        }
+
         return rtrim($this->primary[ $this->rest ],'/');
     }
 
 
+    /**
+     * @param string $packageName
+     * @param string $version
+     *
+     * @return DOMDocument
+     */
     public function fetchPackageReleaseXml($packageName, $version = 'stable')
     {
         $baseUrl = $this->getRestBaseUrl();
         $url = "$baseUrl/r/" . strtolower($packageName);
 
-        if( $version === 'stable'
+        if ( $version === 'stable'
             || $version === 'latest'
-            || $version === 'beta' ) 
-        {
+            || $version === 'beta'
+        ) {
             // Get version info
             $ret = file_get_contents($url . '/' . $version . '.txt');
             if ($ret === false) {
@@ -116,15 +132,19 @@ class Channel
 
     /**
      * fetch channel.xml from PEAR channel server.
+     *
+     * @param string $host
+     *
+     * @return string
      */
     public function fetchChannelXml($host)
     {
-        $xmlstr = null;
         $xmlstr = $this->core->cache ? $this->core->cache->get( $host ) : null;
 
-        // cache not found.
-        if( null !== $xmlstr )
+        // Check the cache
+        if( null !== $xmlstr ) {
             return $xmlstr;
+        }
 
         $httpUrl = 'http://' . $host . '/channel.xml';
         $httpsUrl = 'https://' . $host . '/channel.xml';
@@ -148,19 +168,22 @@ class Channel
             throw new Exception('channel.xml fetch failed.');
         }
 
-        // save cache
+        // Cache result
         if( $this->cache ) {
             $this->cache->set($host, $xmlstr );
         }
         return $xmlstr;
     }
 
+    /**
+     * @return Category[]
+     */
     public function getCategories()
     {
         $baseUrl = $this->getRestBaseUrl();
         $url = $baseUrl . '/c/categories.xml';
         $xmlStr = $this->core->request($url);
-        
+
         // libxml_use_internal_errors(true);
         $xml = Utils::create_dom();
         if( false === $xml->loadXml( $xmlStr ) ) {
@@ -195,13 +218,44 @@ class Channel
     }
 
 
+    /**
+     * @param string
+     *
+     * @return Package|null
+     */
     public function findPackage($name)
     {
         foreach( $this->getCategories() as $category ) {
             $packages = $category->getPackages();
-            if( isset($packages[$name]) )
-                return $packages[ $name ];
+            if( isset($packages[$name]) ) {
+                return $packages[$name];
+            }
         }
+    }
+
+    /**
+     * Initialise the properties necessary to do an HTTP request. This is done lazily as opposed as during
+     * instantiation to avoid an HTTP request if unnecessary which would otherwise fail if no internet
+     * connection is available.
+     */
+    private function init()
+    {
+        if ($this->init) {
+            return;
+        }
+
+        $this->channelXml = $this->fetchChannelXml( $this->host );
+
+        $parser = new ChannelParser;
+        $info = $parser->parse( $this->channelXml );
+
+        $this->name = $info->name;
+        $this->summary = $info->summary;
+        $this->alias = $info->alias;
+        $this->primary = $info->primary;
+        $this->rest = $info->rest;
+
+        $this->init = true;
     }
 }
 
