@@ -42,31 +42,26 @@ class ChannelTest extends PHPUnit_Framework_TestCase
     {
         $cache = new CacheKit\FileSystemCache(array(
             'expiry' => 10,
-            'cache_dir' => 'tests/tmp',
+            'cache_dir' => dirname(__FILE__) . '../tmp',
         ));
-        $channel = new PEARX\Channel('pear.corneltek.com', array( 
+        $channel = new PEARX\Channel('pear.php.net', array(
             'cache' => $cache,
         ));
 
-        $package = $channel->findPackage('Onion');
+        $package = $channel->findPackage('PEAR');
         ok( $package );
         ok( $package->name );
-        is( 'Onion' , $package->name );
+        is( 'PEAR' , $package->name );
         ok( $package->summary );
         ok( $package->license );
     }
 
-
     function getChannels()
     {
         return array(
-            // array( 'pear.zfcampus.org' ),
-            array('pear.corneltek.com'),
             array('pear.symfony.com'),
-            // array('pear.php.net'),
         );
     }
-
 
     /**
      * @dataProvider getChannels
