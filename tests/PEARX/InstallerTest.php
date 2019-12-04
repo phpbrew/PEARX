@@ -6,8 +6,7 @@ class InstallerTest extends PHPUnit_Framework_TestCase
     public function distUrlProvider()
     {
         return array(
-            array('http://pear.corneltek.com/get/AssetKit-1.4.1.tgz'),
-            array('http://pear.corneltek.com/get/CLIFramework-1.5.7.tgz'),
+            array('http://download.pear.php.net/package/Archive_Tar-1.4.8.tgz'),
         );
     }
 

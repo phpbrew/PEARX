@@ -25,7 +25,7 @@ class ChannelParser
         } elseif( is_file($arg) || preg_match('#^https?://#',$arg) ) {
             $xmlstr = file_get_contents($arg);
         } else {
-            throw new Exception("Unexpectedd argument for channel parser.");
+            throw new Exception("Unexpected argument for channel parser.");
         }
 
         // build channel info object.

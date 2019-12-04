@@ -1,3 +1,2 @@
-composer.lock
-tests/tmp
-vendor
+/tests/tmp
+/vendor
