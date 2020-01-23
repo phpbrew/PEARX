@@ -15,7 +15,7 @@ Features:
 
 ## Install
 
-    $ git clone git://github.com/c9s/PEARX.git
+    $ git clone https://github.com/phpbrew/PEARX.git
     $ cd PEARX
     $ onion bundle
     $ sudo pear install -f package.xml
