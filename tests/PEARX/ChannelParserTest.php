@@ -1,6 +1,6 @@
 <?php
 
-class ChannelParserTest extends PHPUnit_Framework_TestCase
+class ChannelParserTest extends \PHPUnit\Framework\TestCase
 {
 
     function getChannels()

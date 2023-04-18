@@ -1,6 +1,6 @@
 <?php
 
-class InstallerTest extends PHPUnit_Framework_TestCase
+class InstallerTest extends \PHPUnit\Framework\TestCase
 {
 
     public function distUrlProvider()
