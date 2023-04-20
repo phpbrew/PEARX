@@ -2,6 +2,11 @@
     "name": "corneltek/pearx",
     "homepage": "http://github.com/phpbrew/PEARX",
     "description": "PEAR channel client",
+    "config": {
+        "platform": {
+            "php": "7.2.5"
+        }
+    },
     "require": {
         "php": ">=7.2.5",
         "corneltek/curlkit": "^1.0.11"
