@@ -2,19 +2,14 @@
     "name": "corneltek/pearx",
     "homepage": "http://github.com/phpbrew/PEARX",
     "description": "PEAR channel client",
-    "config": {
-        "platform": {
-            "php": "5.3.9"
-        }
-    },
     "require": {
-        "php": ">=5.3.0",
+        "php": ">=7.2.5",
         "corneltek/curlkit": "^1.0.11"
     },
     "require-dev": {
         "corneltek/cachekit": "^1",
         "corneltek/phpunit-testmore": "dev-master",
-        "phpunit/phpunit": "^4.8||^5.7"
+        "phpunit/phpunit": "^7.5 || ^8.5"
     },
     "license": "MIT",
     "authors": [

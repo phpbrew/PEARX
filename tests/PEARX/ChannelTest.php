@@ -1,6 +1,6 @@
 <?php
 
-class ChannelTest extends PHPUnit_Framework_TestCase
+class ChannelTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testPackageReleaseInfoFinderWithLatest()
@@ -64,6 +64,7 @@ class ChannelTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @group noPearSymfony
      * @dataProvider getChannels
      */
     function testChannel($host)
